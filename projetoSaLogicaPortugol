@@ -1,0 +1,469 @@
+programa
+{
+	cadeia vetorProduto[999]
+caracter vetorClassificacao[999]
+inteiro vetorEstoque[999], controleEstoque = 0, valorControle = 0
+	
+	funcao inicio()
+	{
+		
+	login()
+	mostrarMenu()
+		
+	}
+	 funcao login (){
+    inteiro criarSenha, senha
+    cadeia criarUsuario, usuario
+    logico controleLogin = verdadeiro
+
+enquanto(controleLogin == verdadeiro){
+	     escreva("╔═══════════════════════════════╗\n")
+          escreva("║      Informe seu Login:       ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+	leia(usuario)
+	limpa()
+
+        	escreva("╔═══════════════════════════════╗\n")
+          escreva("║      Informe sua senha:       ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+	leia(senha)
+	limpa()
+
+se(usuario == "pessoa1" e senha == 123){
+          escreva("╔═══════════════════════╗\n")
+          escreva("║  Login bem sucedido!  ║\n")
+          escreva("╚═══════════════════════╝\n")
+    controleLogin = falso
+	}
+senao{
+    escreva ("Login ou senha incorreto! \nTente novamente!\n")
+	}
+	}
+
+     }
+  funcao mostrarMenu(){
+	 inteiro opcao
+          escreva("╔═══════════════════════════╗\n")
+          escreva("║                           ║\n")
+          escreva("║  1) Inserir Produto       ║\n")
+          escreva("║  2) Atualizar Produto     ║\n")
+          escreva("║  3) Excluir Produto       ║\n")
+          escreva("║  4) Exibir Produtos       ║\n")
+          escreva("║  5) Adicionar Estoque     ║\n")
+          escreva("║  6) Remover Estoque       ║\n")            
+          escreva("║  7) Sair                  ║\n")
+          escreva("║                           ║\n")
+          escreva("╚═══════════════════════════╝")
+    escreva("\n")
+
+    escreva("Qual a opção desejada?\n")
+    leia(opcao)
+
+    escreva("\n")
+
+    escolha (opcao){
+
+        caso 1:{	
+        	      limpa() 
+        	      inserirProduto()
+        pare
+        		}                  
+
+        caso 2:{ 
+        		 limpa()
+                atualizarProduto () 
+        pare
+        		}                          
+
+        caso 3:{ 
+        		 limpa()
+        	 	 excluirProduto ()   
+        pare
+        		}                        
+
+        caso 4:{
+        		 limpa()
+        		 exibirTudo()
+        pare
+        		}                
+
+        caso 5:{ 
+        		 limpa()
+        		 adicionarEstoque () 
+        pare
+        		}                         
+
+        caso 6:{ 
+        		 limpa()
+        		 removerEstoque ()
+        pare
+        		}
+
+        caso 7:{ 
+        		 limpa()
+        		 	logico controlEncerrar = falso
+		inteiro encerrar
+		
+		enquanto(controlEncerrar == falso){
+	     escreva("╔═══════════════════════════╗\n")
+          escreva("║   Deseja encerrar?        ║\n")
+          escreva("║   [1] - SIM               ║\n║   [2] - Retornar ao Menu  ║\n")
+          escreva("╚═══════════════════════════╝\n")
+		leia(encerrar)
+		
+		se(encerrar == 2){
+   		     limpa()
+	     	mostrarMenu ()
+			controlEncerrar = verdadeiro
+		}
+		senao{
+			escreva("Sistema encerrando!")
+			controlEncerrar = verdadeiro
+			pare
+	}
+   }
+ }
+        caso contrario: {
+        	logico casoContrario = falso
+        	
+        	enquanto(casoContrario == falso){
+        		se(opcao == 7){
+        			pare
+        		}
+        		limpa()
+        		se(opcao != 1 ou opcao != 2 ou opcao != 3 ou opcao != 4 ou opcao != 5 ou opcao != 6 ou opcao != 7){
+        		escreva("Opção Invalida! \nTente novamente\n")
+        		casoContrario = verdadeiro
+        		mostrarMenu()
+        		}
+    			 }
+  		 }
+  	 }
+}
+funcao inserirProduto(){
+    logico controleNome = verdadeiro, controleClassificacao = verdadeiro, quantEstoque = falso
+    inteiro  desejaContinuar
+    
+
+    enquanto(controleNome == verdadeiro){
+
+          escreva("╔══════════════════════╗\n")
+          escreva("║ Insirá o " +(controleEstoque+1)+ "º Produto: ║\n")
+          escreva("╚══════════════════════╝\n")
+    leia(vetorProduto[controleEstoque])    
+    
+    se(vetorProduto[controleEstoque] == ""){
+        escreva("opção invalida \n")
+    }
+    senao
+        se(vetorProduto[controleEstoque] == vetorProduto[controleEstoque]){
+            controleNome = falso
+    }
+    }
+      limpa()
+    enquanto(controleClassificacao == verdadeiro){
+
+     
+  	      escreva("\n")
+          escreva("╔═══════════════════════════╗\n")
+          escreva("║ Informe a Classificação:  ║\n")
+          escreva("║ 1- [A]- Primeira linha    ║\n")
+          escreva("║ 2- [B]- Linha Regular     ║\n")
+          escreva("║ 3- [C]- Segunda linha     ║\n") 
+          escreva("╚═══════════════════════════╝\n")
+          escreva(" \n")
+     leia(valorControle)
+	se(valorControle != 1 ou valorControle != 2 ou valorControle != 3){
+	   limpa()
+	  
+    }
+        se(valorControle == valorControle){
+            controleNome = falso
+    }
+        escolha(valorControle){
+        caso 1:{
+            vetorClassificacao[controleEstoque] = 'A'
+            controleClassificacao = falso
+            pare
+
+        }caso 2:{
+            vetorClassificacao[controleEstoque] = 'B'
+            controleClassificacao = falso
+            pare}
+
+        caso 3:{
+            vetorClassificacao[controleEstoque] = 'C'
+            controleClassificacao = falso
+            pare}
+
+            caso contrario: { 
+        	se(valorControle != 1 ou valorControle != 2 ou valorControle != 3){
+            	escreva(" \nclassificação Invalidá! \nTente novamente \n")
+        		
+        }
+        }
+        }
+    }
+    limpa()
+	enquanto(quantEstoque == falso){
+          escreva("╔════════════════════════════════════════════╗\n")
+          escreva("║ Insirá a quantidade do estoque do Produto: ║\n") 
+          escreva("╚════════════════════════════════════════════╝\n")
+    leia(vetorEstoque[controleEstoque])
+
+    	se(vetorEstoque[controleEstoque] <= 0 ){
+    		escreva("Valor inválido\nTente novamente\n")
+    	}
+    	senao{
+    		  escreva("╔═══════════════════════════════════╗\n")
+          escreva("║  Estoque armazenado com sucesso!  ║\n")
+          escreva("╚═══════════════════════════════════╝\n")
+    		quantEstoque = verdadeiro
+    	}
+	}
+          escreva("╔═══════════════════════════════════╗\n")
+          escreva("║ Deseja Inserir o proximo produto? ║\n") 
+          escreva("║ [1] - SIM                         ║\n║ [2] - NÃO                         ║\n")
+          escreva("╚═══════════════════════════════════╝\n")
+	 leia(desejaContinuar)
+	 
+      se(desejaContinuar == 1){
+      	controleEstoque++
+      	limpa()
+      	inserirProduto()
+      }
+      senao{
+      	controleEstoque++
+      	limpa()
+      	mostrarMenu()
+      }
+		controleEstoque++
+      }
+funcao atualizarProduto (){
+       cadeia atualizarDescricao = ""
+       logico atualizarLog = verdadeiro
+	
+        	escreva("╔═══════════════════════════════╗\n")
+          escreva("║  Digite o índice do produto:  ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+        leia(controleEstoque)
+        limpa()
+	   para(inteiro i = 0;i <= controleEstoque;i++){
+		
+        se(vetorProduto[controleEstoque] != ""){
+        }
+        senao{
+        	escreva("Esse Indice não possui produto!\n")
+        	mostrarMenu()
+	   }
+        }
+	   enquanto(atualizarLog == verdadeiro){
+          escreva("╔════════════════════════════════════════╗\n")
+          escreva("║  Digite a Descrição a ser Atualizado:  ║\n")
+          escreva("╚════════════════════════════════════════╝\n")
+        leia(atualizarDescricao)
+
+        se (atualizarDescricao == "") {
+        	  limpa()
+            escreva("Descrição inválida!\n")
+        }
+        senao{
+        	atualizarLog = falso
+        }
+	   }
+         vetorProduto[controleEstoque] = atualizarDescricao
+         limpa()
+         	escreva("╔═══════════════════════════════════╗\n")
+          escreva("║ Descrição Atualizado com sucesso! ║\n")
+          escreva("╚═══════════════════════════════════╝\n")
+         controleEstoque++
+         mostrarMenu()
+        }
+funcao excluirProduto (){
+       logico controleExcluir = verdadeiro
+	  cadeia excluir = ""
+	  caracter excluirCaracter = ' '
+	  inteiro botaoExcluir = 0
+	  
+         	escreva("╔══════════════════════════════════════════════╗\n")
+          escreva("║  Digite o índice do produto a ser excluido:  ║\n")
+          escreva("╚══════════════════════════════════════════════╝\n")
+        leia(controleEstoque)
+	   limpa()
+        para(inteiro i = 0;i <= controleEstoque;i++){
+
+        se(vetorProduto[controleEstoque] != ""){
+        }
+        senao{
+        	escreva("Esse Indice não possui produto!\n")
+        	mostrarMenu()
+	   }
+        }
+	enquanto(controleExcluir == verdadeiro){
+          escreva("╔══════════════════════════════════════════╗\n")
+          escreva("║  Deseja realmente excluir esse Produto?  ║\n")
+          escreva("║  [1] - Excluir                           ║\n║  [2] - Cancelar                          ║\n")
+          escreva("╚══════════════════════════════════════════╝\n")
+        leia(botaoExcluir)
+	   limpa()
+        se (botaoExcluir == 2) {
+            controleExcluir = falso
+            escreva("Cancelado!\n")
+            mostrarMenu ()
+        }
+        se(botaoExcluir == 1){
+         vetorProduto[controleEstoque] = excluir
+         vetorClassificacao[controleEstoque] = excluirCaracter
+         vetorEstoque[controleEstoque] = vetorEstoque[controleEstoque] - vetorEstoque[controleEstoque]
+         limpa()
+          escreva("╔═══════════════════════════════╗\n")
+          escreva("║ Produto excluido com sucesso! ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+         mostrarMenu ()
+         controleExcluir = falso
+        }
+        senao{
+        	escreva("opcao invalida")
+        	retorne
+        }
+	}
+}
+funcao exibirTudo(){
+			inteiro opcao = 0, opcao2 = 0
+			logico encerrarExibirTudo = falso
+
+	     escreva("╔════════════════════════════════╗\n")
+          escreva("║  Escolha a ordem do Estoque    ║\n")
+          escreva("║  [1] - Crescente               ║\n║  [2] - Decrescente             ║\n")
+          escreva("╚════════════════════════════════╝\n")
+			leia(opcao2)
+			limpa()
+			escolha(opcao2){
+				caso 1:
+				para(inteiro i = 0; i < controleEstoque; i++){
+
+				se(vetorProduto[i] != ""){
+				escreva(i+" -  | ",vetorProduto[i])}
+				se(vetorClassificacao[controleEstoque] != 'A' e vetorClassificacao[controleEstoque] != 'B' e vetorClassificacao[controleEstoque] != 'C'){
+				escreva(" | ",vetorClassificacao[i])}
+				escreva(" | ",vetorEstoque[i])
+				escreva("\n")
+				se(vetorProduto[controleEstoque] != ""){
+					pare
+				}
+				}
+				pare
+			  caso 2:
+				para(inteiro i = controleEstoque-1; i >= 0; i--){
+
+				se(vetorProduto[i] != ""){
+				escreva(i+" -  | ",vetorProduto[i])}
+				se(vetorClassificacao[controleEstoque] != 'A' e vetorClassificacao[controleEstoque] != 'B' e vetorClassificacao[controleEstoque] != 'C'){
+				escreva(" | ",vetorClassificacao[i])}
+				escreva(" | ",vetorEstoque[i])
+				escreva("\n")
+				se(vetorProduto[controleEstoque] != ""){
+				}
+				}
+			}
+			escreva("\n")
+        	enquanto(encerrarExibirTudo == falso){
+        	escreva("╔═══════════════════════════╗\n")
+          escreva("║   Deseja encerrar?        ║\n")
+          escreva("║   [0] - SIM               ║\n║   [1] - Retornar ao Menu  ║\n")
+          escreva("╚═══════════════════════════╝\n")
+        		leia(opcao)
+        		se(opcao == 0){
+        		pare
+        		}
+        		se(opcao == 1 ){
+        		limpa()
+        		encerrarExibirTudo = verdadeiro
+        		mostrarMenu()
+        		}
+        		senao {
+        			escreva("Opção Inválida!\n")
+			}
+      	     }
+			}
+funcao adicionarEstoque (){
+	  logico lacoInserir = falso, loopInserir = verdadeiro
+       inteiro quantidade = 0
+       
+        	escreva("╔═══════════════════════════════╗\n")
+          escreva("║  Digite o índice do produto:  ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+        leia(controleEstoque)
+
+	   para(inteiro i = 0;i <= controleEstoque;i++){
+
+        se(vetorEstoque[controleEstoque] != 0){
+        }
+        senao{
+        	limpa()
+        	escreva("Esse Indice não possui produto!\n")
+        	mostrarMenu()
+	   }
+        }
+        
+        enquanto(lacoInserir == falso){
+          escreva("╔═════════════════════════════════════════╗\n")
+          escreva("║  Digite a quantidade a ser adicionada:  ║\n")
+          escreva("╚═════════════════════════════════════════╝\n")
+        leia(quantidade)
+        se (quantidade <= 0) {
+            limpa()
+            escreva("Quantidade inválida!\n")
+        }
+        senao{
+        	lacoInserir = verdadeiro
+        }
+        }
+         vetorEstoque[controleEstoque] = vetorEstoque[controleEstoque] + quantidade
+         limpa()
+          escreva("╔══════════════════════════════════════╗\n")
+          escreva("║  Quantidade adicionada com sucesso!  ║\n")
+          escreva("╚══════════════════════════════════════╝\n")
+         mostrarMenu()
+}
+funcao removerEstoque (){
+       inteiro quantidade = 0
+       logico removerlog = falso, removerControle = verdadeiro	      
+
+          escreva("╔═══════════════════════════════╗\n")
+          escreva("║  Digite o índice do produto:  ║\n")
+          escreva("╚═══════════════════════════════╝\n")
+        leia(controleEstoque)
+
+       para(inteiro i = 0;i <= controleEstoque;i++){
+
+        se(vetorEstoque[controleEstoque] != 0){
+        }
+        senao{
+        	limpa()
+        	escreva("Esse Indice não possui produto!\n")
+        	mostrarMenu()
+	   }
+        }
+        enquanto( removerControle == verdadeiro){
+          escreva("╔═══════════════════════════════════════╗\n")
+          escreva("║  Digite a quantidade a ser Removida:  ║\n")
+          escreva("╚═══════════════════════════════════════╝\n")
+        leia(quantidade)
+
+        se (quantidade <= 0) {
+        	  limpa()
+            escreva("Quantidade inválida!\n")
+        }
+        senao{
+        	removerControle = falso
+        vetorEstoque[controleEstoque] = vetorEstoque[controleEstoque] - quantidade
+        limpa()
+          escreva("╔════════════════════════════════════╗\n")
+          escreva("║  Quantidade Removida com sucesso!  ║\n")
+          escreva("╚════════════════════════════════════╝\n")
+        mostrarMenu()
+        }
+        }
+}
+}
